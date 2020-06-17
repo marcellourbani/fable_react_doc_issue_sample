@@ -22,3 +22,10 @@ let view model dispatch =
         [ button [ OnClick(fun _ -> dispatch Decrement) ] [ str "-" ]
           div [] [ str (sprintf "%A" model) ]
           button [ OnClick(fun _ -> dispatch Increment) ] [ str "+" ] ]
+
+open Elmish
+open Elmish.HMR
+
+Program.mkSimple init update view
+|> Program.withReact "elmish-app"
+|> Program.run
