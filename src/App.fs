@@ -1,9 +1,7 @@
 module App
 
-
 open Fable.React.Props
-
-module R = Fable.React
+open Fable.React
 
 type Model = int
 
@@ -20,7 +18,7 @@ let update (msg: Msg) count =
 
 let view model dispatch =
 
-    R.div []
-        [ R.button [ OnClick(fun _ -> dispatch Decrement) ] [ R.str "-" ]
-          R.div [] [ R.str (sprintf "%A" model) ]
-          R.button [ OnClick(fun _ -> dispatch Increment) ] [ R.str "+" ] ]
+    div []
+        [ button [ OnClick(fun _ -> dispatch Decrement) ] [ str "-" ]
+          div [] [ str (sprintf "%A" model) ]
+          button [ OnClick(fun _ -> dispatch Increment) ] [ str "+" ] ]
