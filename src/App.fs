@@ -1,13 +1,12 @@
 module App
 
-open Fable.React.Props
-open Fable.React
-
 type Model = int
 
 type Msg =
     | Increment
     | Decrement
+
+open Elmish
 
 let init () = 0
 
@@ -16,6 +15,10 @@ let update (msg: Msg) count =
     | Increment -> count + 1
     | Decrement -> count - 1
 
+open Fable.React
+open Fable.React.Props
+
+
 let view model dispatch =
 
     div []
@@ -23,9 +26,8 @@ let view model dispatch =
           div [] [ str (sprintf "%A" model) ]
           button [ OnClick(fun _ -> dispatch Increment) ] [ str "+" ] ]
 
-open Elmish
-open Elmish.HMR
+open Elmish.React
 
 Program.mkSimple init update view
-|> Program.withReact "elmish-app"
+|> Program.withReactBatched "elmish-app"
 |> Program.run
